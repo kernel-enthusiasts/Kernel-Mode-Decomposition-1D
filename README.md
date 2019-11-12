@@ -52,8 +52,11 @@ If there are no crossing frequency modes, *semimanual_maxpool_peel2* should not 
 *tri_cross_vanish_noise.py* and *tri_cross_vanish_noise2.py* are examples of triangle wave modes that have crossing frequencies, vanish, and is corrupted with white noise.  The first is the example used in the paper.  The recommended inputs are as follows:
 
 *tri_cross_vanish_noise.py*:
+
 Done, 0, 1, Done ... 0, 3, Next, 1, 2, Done 
+
 Note that the two sequences only identifies the lowest two intersecting frequency modes.  The final mode is identified automatically.
 
 *tri_cross_vanish_noise2.py*:
+
 0, Done, 1, 3, Done ... 0, 4, Next, 1, 2, Done ...
