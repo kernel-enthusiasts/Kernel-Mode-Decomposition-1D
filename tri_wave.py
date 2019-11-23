@@ -5,7 +5,6 @@ import matplotlib
 matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
 import KMD_lib
-np.random.seed(0)
 
 wave_params = ["tri", 0]
 
@@ -79,14 +78,13 @@ Theta[0] += DTheta0
 Theta[1] += DTheta1
 Theta[2] += DTheta2
 
-signals = np.zeros((4, N))
+signals = np.zeros((3, N))
 
 signals[0] = Amp[0] * KMD_lib.wave(wave_params, Theta[0])
 signals[1] = Amp[1] * KMD_lib.wave(wave_params, Theta[1])
 signals[2] = Amp[2] * KMD_lib.wave(wave_params, Theta[2])
-signals[3] = np.random.normal(0, 0.0, size=(N))
 
-signal = np.asarray(signals[0] + signals[1] + signals[2] + signals[3])
+signal = np.asarray(signals[0] + signals[1] + signals[2])
 
 
 Comp_data_full, wp = KMD_lib.semimanual_maxpool_peel2(signal, wave_params, alpha, t_mesh, 0.003, 0.05, ref_fin=True)
