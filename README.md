@@ -1,6 +1,12 @@
 # Kernel Mode Decomposition for 1D signals
 
-This code is an implementation of the mode decomposition algorithm detailed in https://arxiv.org/abs/1907.08592.  Signals which are the sums of noise and a certain number of nearly periodic modes can be seperated into each mode.  By nearly periodic, we mean each mode is of form <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(t)&space;y(\theta(t))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(t)&space;y(\theta(t))" title="a(t) y(\theta(t))" /></a>, where y is some periodic function, called the base waveform, and <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(t),&space;\theta(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(t),&space;\theta(t)" title="a(t), \theta(t)" /></a> are relatively slowly varying on timescales of order <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{1}{\theta'(t)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{\theta'(t)}" title="\frac{1}{\theta'(t)}" /></a>.  Signals not of this form are outside the scope of this project.
+![alt text](Fig24.PNG)
+
+This code is an implementation of the mode decomposition algorithm detailed in https://arxiv.org/abs/1907.08592.  Signals which are the sums of noise and a certain number of nearly periodic modes can be seperated into each mode.  By nearly periodic, we mean each mode is of form <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(t)&space;y(\theta(t))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(t)&space;y(\theta(t))" title="a(t) y(\theta(t))" /></a>, where y is some periodic function, called the base waveform, and <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(t),&space;\theta(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(t),&space;\theta(t)" title="a(t), \theta(t)" /></a> are relatively slowly varying on timescales of order <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\frac{1}{\theta'(t)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{1}{\theta'(t)}" title="\frac{1}{\theta'(t)}" /></a>.  These nearly periodic modes can be seen in Figure 24.4-6 and their slowly varying amplitudes and frequencies in Figure 24.2-3.  The composite signal that is observed by the algorithm is shown in Figure 24.1.  Signals not of this form are outside the scope of this project.
+
+# Intersection of frequencies
+
+![alt text](Fig34.PNG)
 
 # Installation
 
@@ -34,7 +40,7 @@ The output of this function is:
 
 **wp**: A class containing the estimated waveforms.  This is only relevant in the "unk" wave parameter case.  Note that wp.f is a numpy array of shape (num modes, num overtones, 2).
 
-The only difference is the prior makes an attempt to identify full modes (from the mode segments) and automatically peels them.  If no mode segments are identified as full modes, then the mode segments are passed to the user to either be combined into full modes, passed to the next iteration (if identified mode segments don't approximately span a full mode), or disregarded (if segments are artifacts of noise or a frequency intersection).  The *manual_maxpool_peel2* function will be passed to the user for judgement.
+The only difference is that *semimanual_maxpool_peel2* makes an attempt to identify full modes (from the mode segments) and automatically peels them.  If no mode segments are identified as full modes, then the mode segments are passed to the user to either be combined into full modes, passed to the next iteration (if identified mode segments don't approximately span a full mode), or disregarded (if segments are artifacts of noise or a frequency intersection).  The *manual_maxpool_peel2* function will pass all identified mode segments to the user for judgement.
 
 The first prompt in this user input is: 
 
