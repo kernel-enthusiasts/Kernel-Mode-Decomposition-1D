@@ -2,22 +2,10 @@ import numpy as np
 import math
 from numpy import linalg as LA
 import matplotlib
-#matplotlib.use("nbagg")
 matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
-import time
-import scipy.signal
-import copy
-import tensorflow as tf
-import scipy.optimize
-import KMD_lib as KMD_lib
-np.random.seed(1)
-
-#font = {'family' : 'normal',
-#        'weight' : 'bold',
-#        'size'   : 14}
-#
-#matplotlib.rc('font', **font)
+import KMD_lib
+np.random.seed(0)
 
 
 alpha = 25.0
@@ -96,7 +84,7 @@ Theta[0] += DTheta0
 Theta[1] += DTheta1
 Theta[2] += DTheta2
 
-signals = np.zeros((4, N))
+signals = np.zeros((3, N))
 
 a = np.zeros((15, 2))
 for i in range(8):
@@ -107,9 +95,8 @@ signals0 = Amp[0] * KMD_lib.wave(["custom", a], Theta[0])
 signals[0] = Amp[0] * KMD_lib.wave(["tri", 0], Theta[0])
 signals[1] = Amp[1] * KMD_lib.wave(["custom", a2], Theta[1])
 signals[2] = Amp[2] * KMD_lib.wave(["custom", a3], Theta[2])
-signals[3] = np.random.normal(0, 0.0, size=(N))
 
-signal = np.asarray(signals[0] + signals[1] + signals[2] + signals[3])
+signal = np.asarray(signals[0] + signals[1] + signals[2])
 
 Comp_data_full, wp = KMD_lib.semimanual_maxpool_peel2(signal, ["unk", 15], alpha, t_mesh, 0.003, 0.1, ref_fin=True)
 wpf = wp.f
