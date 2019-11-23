@@ -2,19 +2,11 @@ import numpy as np
 import math
 from numpy import linalg as LA
 import matplotlib
-#matplotlib.use("nbagg")
 matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
 import KMD_lib
-np.random.seed(0)
 
 wave_params = ["ekg", 0]
-
-#font = {'family' : 'normal',
-#        'weight' : 'bold',
-#        'size'   : 26}
-#
-#matplotlib.rc('font', **font)
 
 alpha = 25.0
 N = 10000
@@ -59,7 +51,7 @@ for t_indx in range(1, N):
     Theta[2, t_indx] = Theta[2, t_indx - 1] + Freq[2, t_indx - 1] * ss
 
 Amp = np.zeros((3, N))
-Amp[0] = np.sqrt(A0 ** 2 + B0 ** 2)# * A_vanish
+Amp[0] = np.sqrt(A0 ** 2 + B0 ** 2)
 Amp[1] = np.sqrt(A1 ** 2 + B1 ** 2)
 Amp[2] = np.sqrt(A2 ** 2 + B2 ** 2)
 
@@ -87,20 +79,13 @@ Theta[0] += DTheta0
 Theta[1] += DTheta1
 Theta[2] += DTheta2
 
-signals = np.zeros((4, N))
+signals = np.zeros((3, N))
 
 signals[0] = Amp[0] * KMD_lib.wave(wave_params, Theta[0])
 signals[1] = Amp[1] * KMD_lib.wave(wave_params, Theta[1])
 signals[2] = Amp[2] * KMD_lib.wave(wave_params, Theta[2])
-signals[3] = np.random.normal(0, 0.0, size=(N))
 
-signal = np.asarray(signals[0] + signals[1] + signals[2] + signals[3])
-
-
-#Comp_data_full, wp = KMD_lib.semimanual_maxpool_peel2(signal, ["unk", 15], alpha, t_mesh, 0.003, 0.05, ref_fin=False)
-#wave_params1 = ["custom", wp.f[0]]
-#wave_params2 = ["custom", wp.f[1]]
-#wave_params3 = ["custom", wp.f[2]]
+signal = np.asarray(signals[0] + signals[1] + signals[2])
 
 Comp_data_full, wp = KMD_lib.semimanual_maxpool_peel2(signal, wave_params, alpha, t_mesh, 0.03, 0.05, ref_fin=True)
 
