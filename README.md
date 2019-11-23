@@ -10,7 +10,13 @@ The main idea of this algorithm is to run an iteration where each step idetnfies
 
 ![alt text](Fig34.PNG)
 
-Figure 34 illustrates the signal decomposed in *tri_cross_vanish_noise.py*.  Notice that the first and second modes intersect in frequency around t=0.25.  Furthermore, the highest frequency mode vanishes around t=-0.25.  The identified mode fragments are shown in 
+Figure 34 illustrates the signal decomposed in *tri_cross_vanish_noise.py*.  Notice that the first and second modes intersect in frequency around t=0.25.  Furthermore, the highest frequency mode vanishes around t=-0.25.  This example adds in the further wrinkle of having noise.  
+
+The three iterations of signal energy (essentially a localized Fourier spectrum) and identified frequencies is shown in Figure 38.  The identified mode fragments are labeled 1 through 5.  In this case, our algorithm at each iteration works by passing fragments of modes that haven't been nearly fully identified (such as fragments 1 and 2 at the first iteration), joining together fragments that comprise full modes (such as 1/4, 2/3, or 5), or removing fragments that correspond to multiple modes (at an intersection) or are artifacts of noise (none of the 5 mode fragments).
+
+![alt text](Fig38.PNG)
+
+
 
 # Installation
 
