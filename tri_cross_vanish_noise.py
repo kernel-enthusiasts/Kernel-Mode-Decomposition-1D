@@ -1,27 +1,14 @@
 import numpy as np
 import math
 from numpy import linalg as LA
-import matplotlib
-#matplotlib.use("nbagg")
-matplotlib.use('TkAgg')
+#import matplotlib
+#matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
-import time
-import scipy.signal
-import copy
-import tensorflow as tf
-import scipy.optimize
-import KMD_lib as KMD_lib
+
+import KMD_lib
 np.random.seed(0)
 
-#font = {'family' : 'normal',
-#        'weight' : 'bold',
-#        'size'   : 26}
-#
-#matplotlib.rc('font', **font)
 
-#plt.rc('text', usetex=True)
-#plt.rc('font', family='serif')
-#
 wave_params = ["tri", 0]
 
 alpha = 25.0
