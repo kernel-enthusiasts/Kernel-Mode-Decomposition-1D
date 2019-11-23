@@ -2,15 +2,14 @@ import numpy as np
 import math
 from numpy import linalg as LA
 import matplotlib
-#matplotlib.use("nbagg")
 matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
 import time
 import scipy.signal as scisig
 import copy
-import tensorflow as tf
 import scipy.optimize
 from scipy.interpolate import CubicSpline
+
 
 def wave(wave_params, x):
     #Constructs and returns a wave
